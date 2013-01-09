@@ -119,7 +119,7 @@ class EmailSenderModule extends CWebModule
 
     private function mailContent($mail, CConsoleCommand $caller)
     {
-        $layout = $mail["list"] ? : "email-layout";
+        $layout = $mail["list"] ? $mail["list"] : "email-layout";
         $layout = is_file(getcwd() . "/views/email-views/$layout.php") ? getcwd() . "/views/email-views/$layout.php" : null;
         if (!$layout) return $mail["mail_body"];
         if ($mail["list"]) {
